@@ -12,6 +12,7 @@ io.on('connection', function(socket){
 		var latency = current_time - ping_start_time;
 		console.log(latency);
 
+		// Wait a moment and then ping again.
 		setTimeout(function(){
 			ping(socket);
 		}, 1000);
