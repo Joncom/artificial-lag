@@ -12,7 +12,9 @@ io.on('connection', function(socket){
 		var latency = current_time - ping_start_time;
 		console.log(latency);
 
-		ping(socket);
+		setTimeout(function(){
+			ping(socket);
+		}, 1000);
 	});
 });
 io.listen(3000);
