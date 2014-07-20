@@ -9,9 +9,14 @@
             socket.on('connect', function() {
                 console.log('Connected');
 
+                // Hi-jack the emit function and add delay.
                 var emit_orig = socket.emit;
+                var delay = 50;
                 socket.emit = function() {
-                    return emit_orig.apply(socket, arguments);
+                    var args = arguments;
+                    setTimeout(function() {
+                        emit_orig.apply(socket, args);
+                    }, delay);
                 };
 
                 socket.on('ping', function() {
