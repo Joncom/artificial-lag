@@ -3,8 +3,10 @@ var ping_start_time;
 io.on('connection', function(socket){
 	console.log('Client connected.');
 
+	// Send initial ping request.
 	ping(socket);
 
+	// Receive ping response.
 	socket.on('pong', function() {
 
 		// Calculate latency
