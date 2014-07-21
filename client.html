@@ -14,9 +14,9 @@
                 var emit_orig = socket.emit;
                 var delay = 50;
                 socket.emit = function() {
-                    var args = arguments;
+                    var orig_args = arguments;
                     setTimeout(function() {
-                        emit_orig.apply(socket, args);
+                        emit_orig.apply(socket, orig_args);
                     }, delay);
                 };
 
