@@ -11,12 +11,12 @@
                 console.log('Connected');
 
                 // Hi-jack the emit function and add delay.
-                var emit_orig = socket.emit;
+                var orig_emit = socket.emit;
                 var delay = 50;
                 socket.emit = function() {
                     var orig_args = arguments;
                     setTimeout(function() {
-                        emit_orig.apply(socket, orig_args);
+                        orig_emit.apply(socket, orig_args);
                     }, delay);
                 };
 
